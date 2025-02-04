@@ -230,9 +230,9 @@ No diretorio dags/app  Crie uma função que utiliza o pandas para ler os arquiv
 
 2 - Crie uma task que executa a função.
 
-#### Task 5: rdy_data_task
+#### Task 5: merge_orders_task
 Execução: executar a função merge_orders, para criar um Arquivos CSV com os dados desejados.
-Resultado Esperado: Arquivos CSV sem a data no titulo na pasta to_go (o arquivo deve substituir versões anteriores do mesmo).
+Resultado Esperado: Arquivo .csv com a união dos dados das tabelas ordedr e order-details
 
 ## Etapa 6: Subir a tabela tratada de volta para o Postgres
 
@@ -242,9 +242,15 @@ Resultado Esperado: Arquivos CSV sem a data no titulo na pasta to_go (o arquivo 
 
 Na pasta app defina a função rdy_data_to_go que procuraa tebela tratada com a data igual à da execução da função. Em seguida, salva uma cópia do arquivo em uma pasta específica para ser enviado para o Postgres, substituindo qualquer arquivo existente.
 
-2 - Defina uma task no DAG para subir os para o Postgres
+2 - Defina uma task para executar a função rdy_data_to_go
 
-#### Task 6: upload_golden_db
+#### Task 6: rdy_data_task
+Execução: Executa a função rdy_data_to go.
+Resultado Esperado:  Arquivos CSV sem a data no titulo na pasta to_go (o arquivo deve substituir versões anteriores do mesmo).
+
+3 - Defina uma task no DAG para subir os para o Postgres
+
+#### Task 7: upload_golden_db
 Execução: Executa o comando {et tap-csv--golden target-postgres} para subir os dados para o postgres
 Resultado Esperado: Atualização dos tabelas no schema Golden do banco de dados Nortwind.
 
