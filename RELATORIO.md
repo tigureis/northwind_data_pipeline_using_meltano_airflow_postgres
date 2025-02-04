@@ -217,7 +217,7 @@ Task 4 depende da Task 3.
 
 Esse esquema garante que os dados sejam extraídos e organizados de maneira eficiente, com cada task realizando uma etapa específica do processo de ETL e respeitando as dependências necessárias para a integridade do fluxo de dados.
 
-### Observação: confira os arquis gerados na pasta data/upload/raw para garantir que as tasks executaram corretamente
+### Observação: confira os arquivos gerados na pasta data/upload/raw para garantir que as tasks executaram corretamente
 
 
 ## Etapa 5: Join Data
