@@ -1,0 +1,65 @@
+version: 1
+default_environment: dev
+project_id: 952cf4de-e228-4c1f-87ec-1296a0a4f970
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-postgres
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/tap-postgres.git
+    config:
+      database: northwind
+      host: localhost
+      port: 5432
+      user: northwind_user
+    select:
+    - public-*.*
+  - name: tap-csv
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/tap-csv.git
+    config:
+      files:
+      - entity: order_details
+        path: 
+          /home/tigureis/DNC_engenharia_de_dados/Indicium_Tech_Code_Challenge/data/order_details.csv
+        keys:
+        - order_id
+        delimiter: ','
+        encoding: utf-8
+        header: true
+  - name: tap-csv--golden
+    inherit_from: tap-csv
+    config:
+      files:
+      - entity: order_merged_detail
+        path: 
+          /home/tigureis/DNC_engenharia_de_dados/Indicium_Tech_Code_Challenge/data/uploaded/to_go/order_merged_detail.csv
+        keys:
+        - order_id
+        delimiter: ','
+        encoding: utf-8
+        header: true
+  loaders:
+  - name: target-csv
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/target-csv.git
+    config:
+      destination_path: 
+        /home/tigureis/DNC_engenharia_de_dados/Indicium_Tech_Code_Challenge/data/uploaded/raw/
+      file_naming_scheme: raw_{stream_name}_{datestamp}.csv
+  - name: target-postgres
+    variant: meltanolabs
+    pip_url: meltanolabs-target-postgres
+    config:
+      database: northwind
+      host: localhost
+      port: 5432
+      user: northwind_user
+      default_target_schema: golden
+  files:
+  - name: files-airflow
+    variant: meltano
+    pip_url: git+https://github.com/meltano/files-airflow.git

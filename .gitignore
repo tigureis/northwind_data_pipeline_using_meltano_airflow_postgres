@@ -1,0 +1,5 @@
+meltano/venv
+meltano/.meltano
+meltano/.env
+.venv
+dbdata

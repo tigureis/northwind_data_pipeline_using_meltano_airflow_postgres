@@ -1,0 +1,1 @@
+order_id,customer_id,employee_id,order_date,required_date,shipped_date,ship_via,freight,ship_name,ship_address,ship_city,ship_region,ship_postal_code,ship_country,product_id,unit_price,quantity,discount,_sdc_extracted_at,_sdc_received_at,_sdc_batched_at,_sdc_deleted_at,_sdc_sequence,_sdc_table_version,_sdc_sync_started_at
