@@ -7,7 +7,7 @@ Utilize o arquivo docker-compose.yml para criar um banco de dados PostgreSQL e s
 Configurar o Docker Compose:
 
 * Crie um diretório data na raiz do projeto e coloque os arquivos northwind.sql e order-details.sql dentro deste diretório.
-* Carrewwgue o arquivo docker-compose.yml na raiz do projeto.
+* Carregue o arquivo docker-compose.yml na raiz do projeto.
 * Execute o Docker Compose via linha de comando, ou execute os "comandos mágicos" do notebook init_and_config_meltano.ipynb na ordem em que aparecem.
 
 ## Etapa 2: Configurar o Meltano
